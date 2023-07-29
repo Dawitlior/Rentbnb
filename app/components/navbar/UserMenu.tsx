@@ -31,8 +31,8 @@ const UserMenu = () => {
                 <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
                     <div className="flex flex-col cursor-pointer">
                     <>
-                    <MenuItem onClick={() => {}} label="Login" />
-                    <MenuItem onClick={() => {}} label="Sign up" />
+                    <MenuItem onClick={() => {alert("Login")}} label="Login" />
+                    <MenuItem onClick={() => {alert("Sign up")}} label="Sign up" />
                     </>
                     </div>
                 </div>
