@@ -5,8 +5,12 @@
 /.pnp
 .pnp.js
 /password.txt
+
 # testing
 /coverage
+
+# local env files
+.env
 
 # next.js
 /.next/
