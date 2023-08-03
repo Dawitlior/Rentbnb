@@ -16,10 +16,12 @@ import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../inputs/Input";
 import Button from "../Button";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 
 
 const RegisterModal = () => {
+    const loginModal = useLoginModal()
     const registerModal = useRegisterModal();
     const [isLoading, setIsLoading] = useState(false);
 
@@ -56,6 +58,11 @@ const RegisterModal = () => {
                 setIsLoading(false);
             })
     };
+
+    const toggle = useCallback(() => {
+        registerModal.onClose();
+        loginModal.onOpen();
+    }, [loginModal, registerModal]);
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
@@ -106,12 +113,13 @@ const RegisterModal = () => {
                 icon={AiFillGithub}
                 onClick={() => signIn('github')}
             />
-            <div className="text-neutral-500 text-center mt-4 font-light"
+            <div className="text-neutral-500 text-center mt-4 font-light gap-2"
             >
-                <p>Already have an account?
+                <p>
+                    Already have an account?
                     <span
-                        onClick={registerModal.onClose}
-                        className="  text-neutral-800  cursor-pointer   hover:underline">
+                        onClick={toggle}
+                        className="text-neutral-800 cursor-pointer hover:underline">
                         Log in
                     </span>
                 </p>
