@@ -27,10 +27,12 @@ const LoginModal = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FieldValues>({
+
     defaultValues: {
       email: "",
       password: "",
     },
+
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
