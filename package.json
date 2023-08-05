@@ -27,6 +27,7 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.10.1",
     "typescript": "5.1.6",
+    "world-countries": "^4.0.0",
     "zustand": "^4.3.9"
   },
   "devDependencies": {
