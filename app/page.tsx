@@ -9,7 +9,7 @@ export default function Home() {
   if(isEmpty) {
     return (
       <ClientOnly>
-        <EmptyState />
+        <EmptyState showReset />
       </ClientOnly>
     )
   }
