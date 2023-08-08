@@ -12,7 +12,7 @@ import CountrySelect from "@/app/components/inputs/CountrySelect";
 import dynamic from "next/dynamic"
 import Counter from "../inputs/Counter";
 import ImageUpload from "../inputs/ImageUpload";
-import Input from "@/app/components/inputs/Input";
+import Input from "../inputs/Input";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
