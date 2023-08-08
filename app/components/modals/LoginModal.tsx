@@ -12,7 +12,7 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 
 import Modal from "./Modal";
-import Input from "../inputs/Input";
+import Input from "@/app/components/inputs/Input";
 import Heading from "../Heading";
 import Button from "../Button";
 
