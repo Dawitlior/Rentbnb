@@ -35,7 +35,7 @@ export async function POST(request: Request) {
       description,
       imageSrc,
       category,
-      roomCount, 
+      roomCount,
       bathroomCount,
       guestCount,
       locationValue: location.value,
