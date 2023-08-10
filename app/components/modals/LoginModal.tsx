@@ -27,12 +27,10 @@ const LoginModal = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FieldValues>({
-
     defaultValues: {
       email: "",
       password: "",
     },
-
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
@@ -60,7 +58,6 @@ const LoginModal = () => {
     loginModal.onClose();
     registerModal.onOpen();
   }, [loginModal, registerModal]);
-
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -92,13 +89,13 @@ const LoginModal = () => {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => signIn('google')}
+        onClick={() => signIn("google")}
       />
       <Button
         outline
         label="Continue with Github"
         icon={AiFillGithub}
-        onClick={() => signIn('github')}
+        onClick={() => signIn("github")}
       />
       <div className="text-neutral-500 text-center mt-4 font-light gap-2">
         <p>

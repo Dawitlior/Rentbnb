@@ -1,30 +1,24 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 // for handling the unhandled runtime error/hydration error
 // check if im in server side rendering or not
 
 interface ClientOnlyProps {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }
 
-const ClientOnly: React.FC<ClientOnlyProps> = ({
-    children
-}) => {
-    const [hasMounted, setHasMounted] = useState(false);
+const ClientOnly: React.FC<ClientOnlyProps> = ({ children }) => {
+  const [hasMounted, setHasMounted] = useState(false);
 
-    useEffect(() => {
-        setHasMounted(true);
-    }, [])
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
-    if (!hasMounted) return null;
+  if (!hasMounted) return null;
 
-    return (
-        <>
-            {children}
-        </>
-    );
+  return <>{children}</>;
 };
 
 export default ClientOnly;

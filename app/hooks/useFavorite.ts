@@ -29,7 +29,7 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
       if (!currentUser) {
         return loginModal.onOpen();
       }
-      
+
       try {
         let request;
 

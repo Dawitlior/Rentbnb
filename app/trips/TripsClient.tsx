@@ -23,7 +23,8 @@ const TripsClient: React.FC<TripsClientProps> = ({
   const router = useRouter();
   const [deletingId, setDeletingId] = useState("");
 
-  const onCancel = useCallback((id: string) => {
+  const onCancel = useCallback(
+    (id: string) => {
       setDeletingId(id);
 
       axios
@@ -33,7 +34,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
           router.refresh();
         })
         .catch((error) => {
-          toast.error(error?.response?.data?.error,);
+          toast.error(error?.response?.data?.error);
         })
         .finally(() => {
           setDeletingId("");

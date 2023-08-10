@@ -4,12 +4,12 @@ import useRentModal from "@/app/hooks/useRentModal";
 
 import Modal from "./Modal";
 import { useMemo, useState } from "react";
-import Heading from '../Heading';
-import { categories } from '@/app/components/navbar/Categories';
+import Heading from "../Heading";
+import { categories } from "@/app/components/navbar/Categories";
 import CategoryInput from "../inputs/CategoryInput";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import CountrySelect from "@/app/components/inputs/CountrySelect";
-import dynamic from "next/dynamic"
+import dynamic from "next/dynamic";
 import Counter from "../inputs/Counter";
 import ImageUpload from "../inputs/ImageUpload";
 import Input from "../Input";
@@ -24,8 +24,7 @@ enum STEPS {
   IMAGES = 3,
   DESCRIPTION = 4,
   PRICE = 5,
-};
-
+}
 
 const RentModal = () => {
   const router = useRouter();
@@ -38,35 +37,36 @@ const RentModal = () => {
     handleSubmit,
     setValue,
     watch,
-    formState: {
-      errors,
-    },
+    formState: { errors },
     reset,
   } = useForm<FieldValues>({
     defaultValues: {
-      category: '',
+      category: "",
       location: null,
       guestCount: 1,
       roomCount: 1,
       bathroomCount: 1,
-      imageSrc: '',
+      imageSrc: "",
       price: 1,
-      title: '',
-      description: '',
-    }
+      title: "",
+      description: "",
+    },
   });
 
-  const location = watch('location');
-  const category = watch('category');
-  const guestCount = watch('guestCount');
-  const roomCount = watch('roomCount');
-  const bathroomCount = watch('bathroomCount');
-  const imageSrc = watch('imageSrc');
+  const location = watch("location");
+  const category = watch("category");
+  const guestCount = watch("guestCount");
+  const roomCount = watch("roomCount");
+  const bathroomCount = watch("bathroomCount");
+  const imageSrc = watch("imageSrc");
 
-
-  const Map = useMemo(() => dynamic(() => import('../Map'), {
-    ssr: false,
-  }), [location]) // eslint-disable-next-line react-hooks/exhaustive-deps  
+  const Map = useMemo(
+    () =>
+      dynamic(() => import("../Map"), {
+        ssr: false,
+      }),
+    [location]
+  ); // eslint-disable-next-line react-hooks/exhaustive-deps
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -80,7 +80,6 @@ const RentModal = () => {
     setStep((value) => value - 1);
   };
 
-
   const onNext = () => {
     setStep((value) => value + 1);
   };
@@ -92,7 +91,8 @@ const RentModal = () => {
 
     setIsLoading(true);
 
-    axios.post('/api/listings', data)
+    axios
+      .post("/api/listings", data)
       .then(() => {
         toast.success("Listing created successfully");
         router.refresh();
@@ -105,27 +105,23 @@ const RentModal = () => {
       })
       .finally(() => {
         setIsLoading(false);
-      })
-  }
-
+      });
+  };
 
   const actionLabel = useMemo(() => {
     if (step === STEPS.PRICE) {
-      return 'Create';
+      return "Create";
     }
-    return 'Next';
-  }, [step])
-
+    return "Next";
+  }, [step]);
 
   const secondaryActionLabel = useMemo(() => {
     if (step === STEPS.CATEGORY) {
-      return undefined
+      return undefined;
     }
 
-    return 'Back'
+    return "Back";
   }, [step]);
-
-
 
   let bodyContent = (
     <div className="flex flex-col gap-8">
@@ -146,7 +142,9 @@ const RentModal = () => {
         {categories.map((item) => (
           <div key={item.label} className="col-span-1">
             <CategoryInput
-              onClick={(category) => { setCustomValue('category', category) }}
+              onClick={(category) => {
+                setCustomValue("category", category);
+              }}
               selected={category === item.label}
               label={item.label}
               icon={item.icon}
@@ -155,7 +153,7 @@ const RentModal = () => {
         ))}
       </div>
     </div>
-  )
+  );
 
   if (step === STEPS.LOCATION) {
     bodyContent = (
@@ -165,15 +163,13 @@ const RentModal = () => {
           subtitle="Help guests find you!"
         />
         <CountrySelect
-          onChange={(value) => setCustomValue('location', value)}
+          onChange={(value) => setCustomValue("location", value)}
           value={location}
         />
-        <Map
-          center={location?.latlng}
-        />
+        <Map center={location?.latlng} />
       </div>
-    )
-  };
+    );
+  }
 
   if (step === STEPS.INFO) {
     bodyContent = (
@@ -186,24 +182,24 @@ const RentModal = () => {
           title="Guests"
           subtitle="How many guests do you allow"
           value={guestCount}
-          onChange={(value) => setCustomValue('guestCount', value)}
+          onChange={(value) => setCustomValue("guestCount", value)}
         />
         <hr />
         <Counter
           title="Rooms"
           subtitle="How many rooms do you have?"
           value={roomCount}
-          onChange={(value) => setCustomValue('roomCount', value)}
+          onChange={(value) => setCustomValue("roomCount", value)}
         />
         <hr />
         <Counter
           title="Bathrooms"
           subtitle="How many bathrooms do you have?"
           value={bathroomCount}
-          onChange={(value) => setCustomValue('bathroomCount', value)}
+          onChange={(value) => setCustomValue("bathroomCount", value)}
         />
       </div>
-    )
+    );
   }
 
   if (step === STEPS.IMAGES) {
@@ -215,10 +211,10 @@ const RentModal = () => {
         />
         <ImageUpload
           value={imageSrc}
-          onChange={(value) => setCustomValue('imageSrc', value)}
+          onChange={(value) => setCustomValue("imageSrc", value)}
         />
       </div>
-    )
+    );
   }
 
   if (step === STEPS.DESCRIPTION) {
@@ -246,7 +242,7 @@ const RentModal = () => {
           required
         />
       </div>
-    )
+    );
   }
 
   if (step === STEPS.PRICE) {
@@ -267,7 +263,7 @@ const RentModal = () => {
           required
         />
       </div>
-    )
+    );
   }
 
   return (

@@ -22,7 +22,8 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
   const router = useRouter();
   const [deletingId, setDeletingId] = useState("");
 
-  const onCancel = useCallback((id: string) => {
+  const onCancel = useCallback(
+    (id: string) => {
       setDeletingId(id);
 
       axios
@@ -44,9 +45,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
   return (
     <Container>
       <Heading title="Reservations" subtitle="Bookings on your properties" />
-      <div
-        className=" mt-10 grid  grid-cols-1  sm:grid-cols-2  md:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8"
-      >
+      <div className=" mt-10 grid  grid-cols-1  sm:grid-cols-2  md:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
         {reservations.map((reservation: any) => (
           <ListingCard
             key={reservation.id}
