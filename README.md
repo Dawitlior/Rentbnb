@@ -5,8 +5,7 @@
 
 ## Description
 
-Experience the cutting-edge capabilities of Next.js 13's App Router with Rentbnb,
-an exceptional web application that redefines seamless and dynamic navigation experiences.
+Exceptional web application that redefines seamless and dynamic navigation experiences.
 This project merges a powerful technology stack, including React, Tailwind CSS,
 Prisma, MongoDB, and NextAuth, setting a new standard in modern web development.
 
